@@ -41,7 +41,7 @@ app.post('/submit', (req, res) => {
 });
 
 app.get('/registerUser', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'crud.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.post('/registerUser', (req, res) => {
