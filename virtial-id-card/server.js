@@ -1,44 +1,45 @@
 const express = require('express');
-//const { PrismaClient } = require('@prisma/client');
-//const prisma = new PrismaClient(); 
 const path = require('path');
-const bodyParser = require('body-parser'); // Import body-parser
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Serve static files from the "public" folder
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve the auth form
 app.get('/submit', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '/auth/index.html'));
 });
 
-// Handle the POST request for the "/submit" endpoint
 app.post('/submit', (req, res) => {
     // Handle form submission logic here
     console.log(req.body); // This will log the form data to the console
-    res.send('Form submitted successfully'); // Send a response to the client
 
+    // Send a response to the client if needed
+    // res.send('Form submitted successfully');
+
+    // Redirect to the /auth route
     res.redirect('/auth');
 });
 
-// Serve the success page
+app.get('/registerUser', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'crud.html'));
+});
+
+app.post('/registerUser', (req, res) => {
+    console.log(req.body);
+    res.redirect('/index.html');
+});
+
 app.get('/auth', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '/auth/index.html'));
 });
 
-// Serve the register.html page
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', '/auth/institution / register.html'));
-});
-
-// Serve CSS files with the correct MIME type
 app.get('/login/learner.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login', 'learner.css'), {
         headers: {
-            'Content-Type': 'text/css', // Set the correct MIME type for CSS
+            'Content-Type': 'text/css',
         },
     });
 });
