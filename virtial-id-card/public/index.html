@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Your identity</title>
+    <title>Add User</title>
 </head>
 <body>
     <main>
-        <form id="authForm" action="/submit" method="post">
-            <input type="password" name="password" id="newPassword" placeholder="New password"><br>
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password"><br>
-            <input type="submit" value="Continue"><br>
+        <form id="addUserForm" action="/registerUser" method="post">
+            <input type="text" name="Firstname" id="fName" placeholder="First Name">
+            <input type="text" name="Lastname" id="lName" placeholder="Last Name"><br>
+            <input type="email" name="email" id="email" placeholder="example@email.com"><br>
+            <input type="text" name="program" id="program" placeholder="Program"><br>
+            <input type="tel" name="phone" id="phone" placeholder="Phone"><br>
+            <input type="date" name="Startdate" id="startDate" placeholder="Start Date"><br>
+            <input type="submit" value="Create User">
         </form>
     </main>
 </body>
